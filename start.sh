@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $NVM_DIR/nvm.sh
+#source $NVM_DIR/nvm.sh
 
 REPOSITORY=$REPO
 ACCESS_TOKEN=$TOKEN
