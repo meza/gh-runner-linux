@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/playwright:v1.47.2-noble@sha256:f640d04686ef8fcca228955dc
 ARG RUNNER_VERSION="2.319.1"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV PW_USER=pwuser
+ENV GH_LABELS="self-hosted,playwright,github-actions"
 
 RUN curl -fsSL https://get.docker.com | sh
 
