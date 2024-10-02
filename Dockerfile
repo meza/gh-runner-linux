@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:latest@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b
 
 ARG RUNNER_VERSION="2.319.1"
 ARG DEBIAN_FRONTEND=noninteractive
