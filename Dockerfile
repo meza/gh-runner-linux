@@ -3,6 +3,8 @@ FROM ubuntu:latest@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5
 ARG RUNNER_VERSION="2.319.1"
 ARG DEBIAN_FRONTEND=noninteractive
 
+RUN curl -fsSL https://get.docker.com | sh
+
 RUN apt update -y && apt upgrade -y && useradd -m docker
 RUN apt install -y --no-install-recommends \
     curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip libicu-dev
