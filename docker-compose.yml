@@ -1,0 +1,19 @@
+services:
+  runner:
+    image: vsbmeza/gh-runner-linux:latest
+    restart: unless-stopped
+    environment:
+      REPO: '<owner>/<repo>'
+      TOKEN: '<your-personal-access-token>'
+    env_file:
+      - .env
+    deploy:
+      mode: replicated
+      replicas: 4
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 300M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
