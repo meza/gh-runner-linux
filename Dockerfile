@@ -5,8 +5,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV PW_USER=pwuser
 ENV GH_LABELS="self-hosted,playwright,github-actions"
 
-RUN curl -fsSL https://get.docker.com | sh
-
 RUN apt update -y && apt upgrade -y
 RUN apt install -y --no-install-recommends \
     curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip libicu-dev
@@ -20,6 +18,7 @@ RUN chown -R pwuser ~pwuser && /home/${PW_USER}/actions-runner/bin/installdepend
 
 RUN apt install -y --no-install-recommends mc git
 
+RUN PW_GROUP_ID=$(getent group ${PW_USER} | cut -d: -f3) && usermod -u ${PW_GROUP_ID} -g ${PW_GROUP_ID} ${PW_USER}
 #ENV NVM_DIR=/usr/local/nvm
 #ENV PLAYWRIGHT_BROWSERS_PATH=/usr/local/playwright-browsers
 #
@@ -38,5 +37,6 @@ RUN apt install -y --no-install-recommends mc git
 COPY start.sh start.sh
 RUN chmod +x start.sh
 USER ${PW_USER}
+WORKDIR /home/${PW_USER}
 
-CMD ["/bin/bash", "-c", "./start.sh"]
+CMD ["/bin/bash", "-c", "/start.sh"]
