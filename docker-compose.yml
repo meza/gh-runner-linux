@@ -1,6 +1,9 @@
 services:
   runner:
-    image: vsbmeza/gh-runner-linux:latest
+    image: vsbmeza/github-runner-linux:latest
+    build:
+        context: .
+        dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       REPO: '<owner>/<repo>'
