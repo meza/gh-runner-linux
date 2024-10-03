@@ -16,7 +16,7 @@ RUN cd /home/${PW_USER} && mkdir actions-runner && cd actions-runner \
 
 RUN chown -R pwuser ~pwuser && /home/${PW_USER}/actions-runner/bin/installdependencies.sh
 
-RUN apt install -y --no-install-recommends mc git
+RUN apt install -y --no-install-recommends mc git zip unzip
 
 RUN PW_GROUP_ID=$(getent group ${PW_USER} | cut -d: -f3) && usermod -u ${PW_GROUP_ID} -g ${PW_GROUP_ID} ${PW_USER}
 #ENV NVM_DIR=/usr/local/nvm
