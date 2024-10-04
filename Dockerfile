@@ -19,26 +19,14 @@ RUN chown -R pwuser ~pwuser && /home/${PW_USER}/actions-runner/bin/installdepend
 RUN apt install -y --no-install-recommends mc git zip unzip
 
 RUN PW_GROUP_ID=$(getent group ${PW_USER} | cut -d: -f3) && usermod -u ${PW_GROUP_ID} -g ${PW_GROUP_ID} ${PW_USER}
-#ENV NVM_DIR=/usr/local/nvm
-#ENV PLAYWRIGHT_BROWSERS_PATH=/usr/local/playwright-browsers
-#
-#RUN mkdir -p $NVM_DIR \
-#    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-#
-#RUN echo "source $NVM_DIR/nvm.sh \
-#    && nvm install node \
-#    && nvm use default \
-#    && npm install -g npm@latest \
-#    && npm install -g yarn@latest \
-#    && npm install -g pnpm@latest \
-#    && npx playwright install --with-deps \
-#    && echo \"source $NVM_DIR/nvm.sh\" >> /home/docker/.bashrc"  | bash
+
 RUN curl -fsSL https://get.docker.com | sh
-RUN usermod -aG docker ${PW_USER}
+RUN usermod -aG docker ${PW_USER} && \
+    newgrp docker
 
 COPY start.sh start.sh
 RUN chmod +x start.sh
-USER ${PW_USER}
+USER ${PW_USER}h
 WORKDIR /home/${PW_USER}
 
 CMD ["/bin/bash", "-c", "/start.sh"]

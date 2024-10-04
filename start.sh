@@ -6,8 +6,6 @@ echo "ACCESS_TOKEN ${ACCESS_TOKEN}"
 
 REG_TOKEN=$(curl -X POST -H "Authorization: token ${ACCESS_TOKEN}" -H "Accept: application/vnd.github+json" https://api.github.com/enterprises/stateshifters/actions/runners/registration-token | jq .token --raw-output)
 
-echo "REG_TOKEN ${REG_TOKEN}"
-
 cd ~/actions-runner
 
 ./config.sh --url https://github.com/enterprises/stateshifters --token ${REG_TOKEN} --labels ubuntu-latest,${GH_LABELS} --unattended
