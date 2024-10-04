@@ -8,7 +8,7 @@ REG_TOKEN=$(curl -X POST -H "Authorization: token ${ACCESS_TOKEN}" -H "Accept: a
 
 cd ~/actions-runner
 
-./config.sh --url https://github.com/enterprises/stateshifters --token ${REG_TOKEN} --labels ubuntu-latest,${GH_LABELS} --unattended
+./config.sh --url https://github.com/enterprises/stateshifters --token ${REG_TOKEN} --labels ubuntu-latest,${GH_LABELS} --unattended --work ${GITHUB_WORKSPACE}
 
 cleanup() {
     echo "Removing runner..."

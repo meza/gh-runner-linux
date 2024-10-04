@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV PW_USER=pwuser
 ENV GH_LABELS="self-hosted,playwright,github-actions"
 ENV GITHUB_ACTIONS=true
+ENV GITHUB_WORKSPACE=/github/workspace
 
 RUN apt update -y && apt upgrade -y
 RUN apt install -y --no-install-recommends \
@@ -25,8 +26,8 @@ RUN curl -fsSL https://get.docker.com | sh
 RUN usermod -aG docker ${PW_USER} && \
     newgrp docker
 
-RUN mkdir -p /home/${PW_USER}/actions-runner/_work \
-    && chown -R pwuser:pwuser /home/${PW_USER}/actions-runner/_work
+RUN mkdir -p ${GITHUB_WORKSPACE} \
+    && chown -R pwuser:pwuser ${GITHUB_WORKSPACE}
 
 COPY start.sh start.sh
 RUN chmod +x start.sh
