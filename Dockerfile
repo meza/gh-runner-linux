@@ -4,6 +4,7 @@ ARG RUNNER_VERSION="2.319.1"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV PW_USER=pwuser
 ENV GH_LABELS="self-hosted,playwright,github-actions"
+ENV GITHUB_ACTIONS=true
 
 RUN apt update -y && apt upgrade -y
 RUN apt install -y --no-install-recommends \
