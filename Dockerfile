@@ -33,6 +33,7 @@ RUN PW_GROUP_ID=$(getent group ${PW_USER} | cut -d: -f3) && usermod -u ${PW_GROU
 #    && npm install -g pnpm@latest \
 #    && npx playwright install --with-deps \
 #    && echo \"source $NVM_DIR/nvm.sh\" >> /home/docker/.bashrc"  | bash
+RUN curl -fsSL https://get.docker.com | sh
 
 COPY start.sh start.sh
 RUN chmod +x start.sh
