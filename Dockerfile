@@ -26,7 +26,7 @@ RUN usermod -aG docker ${PW_USER} && \
 
 COPY start.sh start.sh
 RUN chmod +x start.sh
-USER ${PW_USER}h
+USER ${PW_USER}
 WORKDIR /home/${PW_USER}
 
 CMD ["/bin/bash", "-c", "/start.sh"]
