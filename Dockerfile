@@ -24,7 +24,8 @@ RUN PW_GROUP_ID=$(getent group ${PW_USER} | cut -d: -f3) && usermod -u ${PW_GROU
 
 RUN curl -fsSL https://get.docker.com | sh
 RUN usermod -aG docker ${PW_USER} && \
-    newgrp docker
+    newgrp docker && \
+    usermod -a -G root ${PW_USER}
 
 RUN mkdir -p ${GITHUB_WORKSPACE} \
     && chown -R pwuser:pwuser ${GITHUB_WORKSPACE}
