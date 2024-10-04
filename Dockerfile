@@ -25,6 +25,9 @@ RUN curl -fsSL https://get.docker.com | sh
 RUN usermod -aG docker ${PW_USER} && \
     newgrp docker
 
+RUN mkdir -p /home/${PW_USER}/actions-runner/_work \
+    && chown -R pwuser:pwuser /home/${PW_USER}/actions-runner/_work
+
 COPY start.sh start.sh
 RUN chmod +x start.sh
 USER ${PW_USER}
