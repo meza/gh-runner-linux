@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV PW_USER=pwuser
 ENV GH_LABELS="self-hosted,playwright,github-actions"
 ENV GITHUB_ACTIONS=true
-ENV GITHUB_WORKSPACE=/github/workspace
+ENV GITHUB_WORKSPACE=/home/${PW_USER}/actions-runner/_work
 
 RUN apt update -y && apt upgrade -y
 RUN apt install -y --no-install-recommends \
