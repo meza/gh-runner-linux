@@ -27,7 +27,7 @@ RUN usermod -aG docker ${PW_USER} && \
     newgrp docker && \
     usermod -a -G root ${PW_USER}
 
-RUN mkdir -p ${GITHUB_WORKSPACE} \
+RUN mkdir -p ${GITHUB_WORKSPACE}/_tool \
     && chown -R pwuser:pwuser ${GITHUB_WORKSPACE}
 
 COPY start.sh start.sh
