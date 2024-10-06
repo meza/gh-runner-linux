@@ -34,5 +34,6 @@ COPY start.sh start.sh
 RUN chmod +x start.sh
 USER ${PW_USER}
 WORKDIR /home/${PW_USER}
+RUN npx playwright install
 
 CMD ["/bin/bash", "-c", "/start.sh"]
