@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.47.2-noble@sha256:f640d04686ef8fcca228955dc73f36b86ccd2228eda488fb2b32f3f037639f09
+FROM mcr.microsoft.com/playwright:v1.48.0-noble@sha256:d1e54d0cbb2d6b125b0bbd32536b2ed53953ea78159c27a56f22b10058e733c4
 
 ARG RUNNER_VERSION="2.319.1"
 ARG DEBIAN_FRONTEND=noninteractive
